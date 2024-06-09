@@ -4,3 +4,10 @@
 
 
 .idea/
+
+settings.json
+
+
+/target/
+.DS_Store
+.class

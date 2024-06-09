@@ -1,16 +1,25 @@
 package br.ce.testesUnitarios.servicos;
 
+import static br.ce.testesUnitarios.servicos.matchers.MatchersProprios.eHoje;
+import static br.ce.testesUnitarios.servicos.matchers.MatchersProprios.eHojeComDiferencaDias;
+import static br.ce.testesUnitarios.servicos.matchers.MatchersProprios.eSegunda;
 import static br.testesUnitarios.utils.DataUtils.isMesmaData;
 import static br.testesUnitarios.utils.DataUtils.obterDataComDiferencaDias;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
-import br.testesUnitarios.servicos.LocacaoService;
-import br.testesUnitarios.utils.DataUtils;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Assume;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.rules.ErrorCollector;
 import org.junit.rules.ExpectedException;
 
@@ -19,6 +28,8 @@ import br.testesUnitarios.entidades.Locacao;
 import br.testesUnitarios.entidades.Usuario;
 import br.testesUnitarios.exceptions.FilmeSemEstoqueException;
 import br.testesUnitarios.exceptions.LocadoraException;
+import br.testesUnitarios.servicos.LocacaoService;
+import br.testesUnitarios.utils.DataUtils;
 
 public class LocacaoServiceTest {
 
@@ -38,7 +49,7 @@ public class LocacaoServiceTest {
 	@Test
 	public void deveAlugarFilme() throws Exception {
 
-		Assume.assumeFalse(DataUtils.verificarDiaSemana(new Date(), Calendar.SATURDAY));
+		Assume.assumeFalse(DataUtils.verificarDiaSemana(new Date(), Calendar.SUNDAY));
 
 		// cenario
 		Usuario usuario = new Usuario("Usuario 1");
@@ -49,6 +60,8 @@ public class LocacaoServiceTest {
 
 		// verificacao
 		error.checkThat(locacao.getValor(), is(equalTo(5.0)));
+		error.checkThat(locacao.getDataRetorno(), eHoje());
+		error.checkThat(locacao.getDataRetorno(), eHojeComDiferencaDias(1));
 		error.checkThat(isMesmaData(locacao.getDataLocacao(), new Date()), is(true));
 		error.checkThat(isMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)), is(true));
 	}
@@ -98,8 +111,7 @@ public class LocacaoServiceTest {
 
 		Locacao retorno = service.alugarFilme(usuario, filmes);
 
-		boolean eSegunda =  DataUtils.verificarDiaSemana(retorno.getDataRetorno(), Calendar.MONDAY);
-		Assert.assertTrue(eSegunda);
+		assertThat(retorno.getDataRetorno(), eSegunda());
 	}
 
 }
