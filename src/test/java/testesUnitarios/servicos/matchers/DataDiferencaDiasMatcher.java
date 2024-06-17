@@ -1,4 +1,4 @@
-package br.ce.testesUnitarios.servicos.matchers;
+package testesUnitarios.servicos.matchers;
 
 import java.util.Date;
 
@@ -7,16 +7,17 @@ import org.hamcrest.TypeSafeMatcher;
 
 import br.testesUnitarios.utils.DataUtils;
 
-public class DataDiferencaDiasMatcher extends TypeSafeMatcher<Date>{
+public class DataDiferencaDiasMatcher extends TypeSafeMatcher<Date> {
 
     private Integer qtdDias;
 
-    public DataDiferencaDiasMatcher(Integer qtdDias){
-        this.qtdDias =qtdDias;
+    public DataDiferencaDiasMatcher(Integer qtdDias) {
+        this.qtdDias = qtdDias;
     }
 
     @Override
     public void describeTo(Description arg0) {
+        // TODO Auto-generated method stub
 
     }
 
@@ -25,5 +26,4 @@ public class DataDiferencaDiasMatcher extends TypeSafeMatcher<Date>{
         return DataUtils.isMesmaData(data, DataUtils.obterDataComDiferencaDias(qtdDias));
     }
 
-    
 }

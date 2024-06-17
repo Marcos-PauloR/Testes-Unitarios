@@ -1,11 +1,11 @@
-package br.ce.testesUnitarios.servicos;
+package testesUnitarios.servicos;
 
-import br.testesUnitarios.servicos.Calculadora;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import br.testesUnitarios.exceptions.NaoPodeDividirPorZeroException;
+import br.testesUnitarios.servicos.Calculadora;
 
 public class CalculadoraTest {
 	

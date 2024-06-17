@@ -1,15 +1,13 @@
 package br.testesUnitarios.utils;
 
+import java.util.Calendar;
 import static java.util.Calendar.DAY_OF_MONTH;
 import static java.util.Calendar.DAY_OF_WEEK;
 import static java.util.Calendar.MONTH;
 import static java.util.Calendar.YEAR;
-
-import java.util.Calendar;
 import java.util.Date;
 
 public class DataUtils {
-	
 
 	public static Date adicionarDias(Date data, int dias) {
 		Calendar calendar = Calendar.getInstance();
@@ -22,14 +20,13 @@ public class DataUtils {
 		return adicionarDias(new Date(), dias);
 	}
 
-	public static Date obterData(int dia, int mes, int ano){
+	public static Date obterData(int dia, int mes, int ano) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(DAY_OF_MONTH, dia);
 		calendar.set(MONTH, mes - 1);
 		calendar.set(YEAR, ano);
 		return calendar.getTime();
 	}
-	
 
 	public static boolean isMesmaData(Date data1, Date data2) {
 		Calendar calendar1 = Calendar.getInstance();
