@@ -1,10 +1,10 @@
-package br.ce.testesUnitarios.suites;
+package testesUnitarios.suites;
 
 import org.junit.runners.Suite.SuiteClasses;
 
-import br.ce.testesUnitarios.servicos.CaculculoValorLocacaoTeste;
-import br.ce.testesUnitarios.servicos.CalculadoraTest;
-import br.ce.testesUnitarios.servicos.LocacaoServiceTest;
+import testesUnitarios.servicos.CaculculoValorLocacaoTeste;
+import testesUnitarios.servicos.CalculadoraTest;
+import testesUnitarios.servicos.LocacaoServiceTest;
 
 //Comentado para não executar os mesmos testes duas vezes
 //@RunWith(Suite.class)
