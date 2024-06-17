@@ -1,5 +1,7 @@
 package br.testesUnitarios.servicos;
 
+import static br.testesUnitarios.utils.DataUtils.adicionarDias;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +12,6 @@ import br.testesUnitarios.entidades.Usuario;
 import br.testesUnitarios.exceptions.FilmeSemEstoqueException;
 import br.testesUnitarios.exceptions.LocadoraException;
 import br.testesUnitarios.utils.DataUtils;
-import static br.testesUnitarios.utils.DataUtils.adicionarDias;
 
 public class LocacaoService {
 
